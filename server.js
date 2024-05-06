@@ -36,4 +36,9 @@ app.use(express.json());
 
 app.use("/", authRoute);
 
+// routes
+require('./routes/testimonialRoutes')(app);
+require('./routes/blogRoutes')(app);
+
+
 module.exports = app;
