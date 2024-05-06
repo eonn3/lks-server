@@ -4,7 +4,7 @@ const verification = require("../controllers/verify")
 
 
 router.post("/upload/about", [verification.userVerification], uploadAbout);
-router.put("/edit/about/:aboutId", [verification.userVerification], editAbout);
+router.put("/edit/about/:aboutId", editAbout);
 router.get("/getAbout", getAbout);
 
 module.exports = router;
