@@ -27,8 +27,8 @@ module.exports.editAbout = async (req, res) => {
 
         const updatedFields = {};
 
-        if (req.body.schoolDescription && req.body.schoolDescription !== existingAbout.schoolDescription) {
-            updatedFields.schoolDescription = req.body.schoolDescription;
+        if (req.body.description && req.body.description !== existingAbout.description) {
+            updatedFields.description = req.body.description;
         }
         if (req.body.phoneNumber && req.body.phoneNumber !== existingAbout.phoneNumber) {
             updatedFields.phoneNumber = req.body.phoneNumber;
