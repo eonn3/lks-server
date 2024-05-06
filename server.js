@@ -5,7 +5,8 @@ const cookieParser = require('cookie-parser');
 const authRoute = require("./routes/authRoutes");
 const aboutRoute = require("./routes/aboutRoutes");
 const facultyRoute = require("./routes/facultyRoutes");
-const photoRoute  = require("./routes/photoRoutes")
+const photoRoute  = require("./routes/photoRoutes");
+const emailRoute = require("./routes/emailRoutes");
 
 
 require("dotenv").config();
@@ -36,12 +37,16 @@ app.options("*", cors());
 
 
 app.use(cookieParser());
-
 app.use(express.json());
+
+// handle email for the donation
+app.post
+
 
 app.use("/", authRoute);
 app.use("/", aboutRoute);
 app.use("/", facultyRoute);
 app.use("/", photoRoute);
+app.use("/", emailRoute);
 
 module.exports = app;
