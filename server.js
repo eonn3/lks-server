@@ -5,6 +5,7 @@ const cookieParser = require('cookie-parser');
 const authRoute = require("./routes/authRoutes");
 const aboutRoute = require("./routes/aboutRoutes");
 const facultyRoute = require("./routes/facultyRoutes");
+const photoRoute  = require("./routes/photoRoutes")
 
 
 require("dotenv").config();
@@ -41,5 +42,6 @@ app.use(express.json());
 app.use("/", authRoute);
 app.use("/", aboutRoute);
 app.use("/", facultyRoute);
+app.use("/", photoRoute);
 
 module.exports = app;
