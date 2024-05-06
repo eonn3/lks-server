@@ -2,9 +2,9 @@ const about = require('../models/About');
 
 module.exports.uploadAbout = async (req, res) => {
     try{
-        const { description, phoneNumber, email, address, facebook} = req.body;
+        const { schoolDescription, phoneNumber, email, address, facebook} = req.body;
 
-        const aboutTo = await about.create({ description, phoneNumber, email, address, facebook });
+        const aboutTo = await about.create({ schoolDescription, phoneNumber, email, address, facebook });
         res.status(201).json({ 
             message: "About uploaded successfully", 
             success: true,
@@ -27,8 +27,8 @@ module.exports.editAbout = async (req, res) => {
 
         const updatedFields = {};
 
-        if (req.body.description && req.body.description !== existingAbout.description) {
-            updatedFields.description = req.body.description;
+        if (req.body.schoolDescription && req.body.schoolDescription !== existingAbout.schoolDescription) {
+            updatedFields.schoolDescription = req.body.schoolDescription;
         }
         if (req.body.phoneNumber && req.body.phoneNumber !== existingAbout.phoneNumber) {
             updatedFields.phoneNumber = req.body.phoneNumber;
@@ -75,12 +75,12 @@ module.exports.getAbout = async (req, res) => {
     try{
         const About = await about.find();
 
-        const { description, phoneNumber, email, address, facebook } = About[0];
+        const { schoolDescription, phoneNumber, email, address, facebook } = About[0];
 
         res.status(200).json({
             status: 'success',
             message: 'About fetched successfully',
-            About: { description, phoneNumber, email, address, facebook },
+            About: { schoolDescription, phoneNumber, email, address, facebook },
         });
 
     }catch(error){

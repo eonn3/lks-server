@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const aboutSchema = new mongoose.Schema(
     {
-        description: {
+        schoolDescription: {
             type: String,
             required: true
         },
