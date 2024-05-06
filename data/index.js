@@ -104,7 +104,7 @@ export const testimonials = [
         email: "rosita@email.com",
         contactNumber: "09123456789",
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        status: true
+        status: "Approved"
     },
     {
         name: "Stephen Jose",
@@ -112,7 +112,7 @@ export const testimonials = [
         email: "stephenj@email.com",
         contactNumber: "09123456789",
         text: "Nulla facilisi. Vivamus lacinia arcu vitae ex rutrum, vel accumsan ligula elementum.",
-        status: true
+        status: "Approved"
     },
     {
         name: "Juan Fondevilla",
@@ -120,7 +120,7 @@ export const testimonials = [
         email: "jfondevilla@email.com",
         contactNumber: "09123456789",
         text: "Nulla facilisi. Vivamus lacinia arcu vitae ex rutrum, vel accumsan ligula elementum.",
-        status: true
+        status: "Approved"
     },
     {
         name: "Janet Fabello",
@@ -128,7 +128,7 @@ export const testimonials = [
         email: "jfab@email.com",
         contactNumber: "09123456789",
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        status: false
+        status: "Pending"
     },
     {
         name: "Olive J. Fetalvero",
@@ -136,7 +136,7 @@ export const testimonials = [
         email: "olivejfetalvero@email.com",
         contactNumber: "09123456789",
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        status: true
+        status: "Approved"
     },
     {
         name: "Princess Fiedacan",
@@ -144,7 +144,7 @@ export const testimonials = [
         email: "princess.fiedacan@email.com",
         contactNumber: "09123456789",
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        status: true
+        status: "Approved"
     },
     {
         name: "Paul Ferancullo",
@@ -152,7 +152,7 @@ export const testimonials = [
         email: "ferancullo.p@email.com",
         contactNumber: "09123456789",
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        status: true
+        status: "Approved"
     },
     {
         name: "Hilda Villanueva",
@@ -160,6 +160,6 @@ export const testimonials = [
         email: "hilda@email.com",
         contactNumber: "09123456789",
         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        status: false
+        status: "Pending"
     }
 ]
