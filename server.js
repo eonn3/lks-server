@@ -27,7 +27,7 @@ app.listen(PORT, () => {
 
 app.use(
     cors({
-      origin: "http://localhost:3000", // Add URL ng frontend here
+      origin: "*",
       methods: ["GET", "POST", "PUT", "DELETE"],
       credentials: true,
     })
