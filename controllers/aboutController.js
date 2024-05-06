@@ -1,18 +1,15 @@
 const about = require('../models/About');
 
-module.exports.uploadAbout = async (req, res, next) => {
+module.exports.uploadAbout = async (req, res) => {
     try{
         const { schoolDescription, phoneNumber, email, address, facebook} = req.body;
 
         const aboutTo = await about.create({ schoolDescription, phoneNumber, email, address, facebook });
-        res
-      .status(201)
-      .json({ 
+        res.status(201).json({ 
             message: "About uploaded successfully", 
-            success: true, 
-            aboutTo 
+            success: true,
+            aboutTo,
             });
-    next();
     }catch(error){
         return res.json({
                 message: 'Error! [uploadAbout]',
@@ -21,7 +18,7 @@ module.exports.uploadAbout = async (req, res, next) => {
     }
 };
 
-module.exports.editAbout = async (req, res, next) => {
+module.exports.editAbout = async (req, res) => {
     try{
 
         const aboutId = req.params.aboutId;
@@ -73,3 +70,17 @@ module.exports.editAbout = async (req, res, next) => {
             })
     }
 };
+
+module.exports.getAbout = async (req, res, next) => {
+    try{
+        const About = await about.find();
+
+        res.status(200).json({
+            status: 'success',
+            message: 'About fetched successfully',
+            About,
+        })
+    }catch(error){
+        console.error(error);
+    }
+}
