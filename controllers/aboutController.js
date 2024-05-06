@@ -75,12 +75,12 @@ module.exports.getAbout = async (req, res) => {
     try{
         const About = await about.find();
 
-        const { schoolDescription, phoneNumber, email, address, facebook } = About[0];
+        const { schoolDescription, phoneNumber, email, address, facebook, _id } = About[0];
 
         res.status(200).json({
             status: 'success',
             message: 'About fetched successfully',
-            About: { schoolDescription, phoneNumber, email, address, facebook },
+            About: { schoolDescription, phoneNumber, email, address, facebook, _id },
         });
 
     }catch(error){
