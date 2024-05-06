@@ -12,11 +12,7 @@ module.exports.Signup = async (req, res, next) => {
       return res.json({ message: "User already exists" });
     }
     const lampUser = await LampUser.create({ username, password });
-    const token = createSecretToken(lampUser._id);
-    res.cookie("token", token, {
-      withCredentials: true,
-      httpOnly: false,
-    });
+
     res
       .status(201)
       .json({ 
@@ -51,7 +47,12 @@ module.exports.Login = async (req, res) => {
       }
   
       const token = createSecretToken(lampUser._id);
-  
+
+      res.cookie("token", token, {
+        withCredentials: true,
+        httpOnly: false,
+      });
+
       res.status(200).json({
         success: true,
         token,
