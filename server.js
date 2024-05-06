@@ -2,8 +2,11 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
-const authRoute = require("./routes/authRoutes")
+const authRoute = require("./routes/authRoutes");
 const aboutRoute = require("./routes/aboutRoutes");
+const facultyRoute = require("./routes/facultyRoutes");
+
+
 require("dotenv").config();
 
 
@@ -37,5 +40,6 @@ app.use(express.json());
 
 app.use("/", authRoute);
 app.use("/", aboutRoute);
+app.use("/", facultyRoute);
 
 module.exports = app;

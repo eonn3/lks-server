@@ -65,13 +65,13 @@ module.exports.editAbout = async (req, res) => {
 
     }catch(error){
         return res.json({
-                message: 'Error! [uploadAbout]',
+                message: 'Error! [editAbout]',
                 error
             })
     }
 };
 
-module.exports.getAbout = async (req, res, next) => {
+module.exports.getAbout = async (req, res) => {
     try{
         const About = await about.find();
 
@@ -80,6 +80,7 @@ module.exports.getAbout = async (req, res, next) => {
             message: 'About fetched successfully',
             About,
         })
+
     }catch(error){
         console.error(error);
     }
