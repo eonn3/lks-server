@@ -2,9 +2,9 @@ const about = require('../models/About');
 
 module.exports.uploadAbout = async (req, res) => {
     try{
-        const { schoolDescription, phoneNumber, email, address, facebook} = req.body;
+        const { description, phoneNumber, email, address, facebook} = req.body;
 
-        const aboutTo = await about.create({ schoolDescription, phoneNumber, email, address, facebook });
+        const aboutTo = await about.create({ description, phoneNumber, email, address, facebook });
         res.status(201).json({ 
             message: "About uploaded successfully", 
             success: true,
@@ -75,12 +75,12 @@ module.exports.getAbout = async (req, res) => {
     try{
         const About = await about.find();
 
-        const { schoolDescription, phoneNumber, email, address, facebook } = About[0];
+        const { description, phoneNumber, email, address, facebook } = About[0];
 
         res.status(200).json({
             status: 'success',
             message: 'About fetched successfully',
-            About: { schoolDescription, phoneNumber, email, address, facebook },
+            About: { description, phoneNumber, email, address, facebook },
         });
 
     }catch(error){
