@@ -3,7 +3,11 @@ import { type } from "os";
 
 const testimonialSchema = new mongoose.Schema(
     {
-        name: {
+        firstname: {
+            type: String,
+            required: true
+        },
+        lastname: {
             type: String,
             required: true
         },
@@ -23,9 +27,14 @@ const testimonialSchema = new mongoose.Schema(
             type: String,
             required: true
         },
+        file: {
+            type: String,
+            required: true
+        },
         status: {
-            type: Boolean,
-            default: false
+            type: String,
+            enum: ["Pending", "Approved", "Rejected"],
+            default: "Pending"
         }
     },
     { timestamps: true }
