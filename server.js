@@ -39,9 +39,6 @@ app.options("*", cors());
 app.use(cookieParser());
 app.use(express.json());
 
-// handle email for the donation
-app.post
-
 
 app.use("/", authRoute);
 app.use("/", aboutRoute);
