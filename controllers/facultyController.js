@@ -19,14 +19,18 @@ module.exports.uploadFaculty = async (req, res) => {
 }
 
 module.exports.editFaculty = async (req, res) => {
-    try{
-
+    try {
         const facultyId = req.params.facultyId;
+        const existingFaculty = await Faculty.findById(facultyId);
 
-        const existingFaculty = await about.findById(facultyId);
+        if (!existingFaculty) {
+            return res.status(404).json({
+                status: 'error',
+                message: 'Faculty not found',
+            });
+        }
 
         const updatedFields = {};
-
         if (req.body.name && req.body.name !== existingFaculty.name) {
             updatedFields.name = req.body.name;
         }
@@ -37,34 +41,32 @@ module.exports.editFaculty = async (req, res) => {
             updatedFields.image = req.body.image;
         }
 
-
         if (Object.keys(updatedFields).length === 0) {
             return res.status(200).json({
                 status: 'success',
-                message: 'No changes detected. Product information remains unchanged.',
-                existingAbout,
+                message: 'No changes detected. Faculty information remains unchanged.',
+                existingFaculty,
             });
         }
 
         Object.assign(existingFaculty, updatedFields);
-
-
         await existingFaculty.save();
 
         res.status(200).json({
             status: 'success',
-            message: 'Product updated successfully',
+            message: 'Faculty updated successfully',
             existingFaculty: existingFaculty,
         });
-
-
-    }catch(error){
-        return res.json({
-                message: 'Error! [editFaculty]',
-                error
-            })
+    } catch (error) {
+        console.error('Error in editFaculty:', error);
+        return res.status(500).json({
+            status: 'error',
+            message: 'Internal server error',
+            error: error.message,
+        });
     }
 };
+
 
 module.exports.getFaculty = async (req, res) => {
     try {
