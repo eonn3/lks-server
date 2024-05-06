@@ -46,4 +46,9 @@ app.use("/", facultyRoute);
 app.use("/", photoRoute);
 app.use("/", emailRoute);
 
+// routes
+require('./routes/testimonialRoutes')(app);
+require('./routes/blogRoutes')(app);
+
+
 module.exports = app;

@@ -1,12 +1,8 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
 const testimonialSchema = new mongoose.Schema(
     {
-        firstname: {
-            type: String,
-            required: true
-        },
-        lastname: {
+        name: {
             type: String,
             required: true
         },
@@ -26,10 +22,6 @@ const testimonialSchema = new mongoose.Schema(
             type: String,
             required: true
         },
-        file: {
-            type: String,
-            required: true
-        },
         status: {
             type: String,
             enum: ["Pending", "Approved", "Rejected"],
@@ -38,3 +30,5 @@ const testimonialSchema = new mongoose.Schema(
     },
     { timestamps: true }
 );
+
+module.exports = mongoose.model("Testimonial", testimonialSchema);
