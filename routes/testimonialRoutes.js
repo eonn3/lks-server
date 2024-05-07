@@ -8,5 +8,7 @@ module.exports = function(app) {
 
     app.get("/getTestimonialsAdmin/:applicantType/:status", controller.getTestimonialsByApplicantTypeAdmin);
 
+    app.get("/getPendingTestimonials", controller.getTestimonialsByPendingStatus);
+
     app.put("/updateTestimonialStatus/:testimonialId/:status", controller.updateTestimonialStatus);
 };

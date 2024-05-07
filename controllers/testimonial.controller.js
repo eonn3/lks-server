@@ -57,6 +57,22 @@ exports.getTestimonialsByApplicantTypeAdmin = async (req, res) => {
   }
 };
 
+// Function to get testimonials by pending status
+exports.getTestimonialsByPendingStatus = async (req, res) => {
+  try {
+      const pendingTestimonials = await testimonial
+      .find({ status: "Pending" })
+      .select("name text")
+      .exec();
+
+      res.status(200).json({ testimonials: pendingTestimonials });
+  } catch (error) {
+      console.error("Error getting testimonials by pending status:", error);
+      res.status(500).json({ message: "An error occurred while getting testimonials." });
+  }
+};
+
+
 exports.updateTestimonialStatus = async (req, res) => {
   try {
       const { testimonialId, status } = req.params;
