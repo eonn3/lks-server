@@ -62,7 +62,7 @@ exports.getTestimonialsByPendingStatus = async (req, res) => {
   try {
       const pendingTestimonials = await testimonial
       .find({ status: "Pending" })
-      .select("name text")
+      .select("name text email contactNumber applicantType")
       .exec();
 
       res.status(200).json({ testimonials: pendingTestimonials });
