@@ -25,13 +25,16 @@ app.listen(PORT, () => {
     console.log(`Server is running on port: ${PORT}`);
 });
 
-app.use(
-    cors({
-      origin: "*",
-      methods: ["GET", "POST", "PUT", "DELETE"],
-      credentials: true,
-    })
-  );
+const corsOptions = {
+  origin: [
+    'http://localhost:3000',
+    'https://lks-frontend.vercel.com'
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+};
+
+app.use(cors(corsOptions));
 
 app.options("*", cors());
 
