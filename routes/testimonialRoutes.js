@@ -6,7 +6,7 @@ module.exports = function(app) {
 
     app.get("/getApprovedTestimonials/:applicantType", controller.getTestimonialsByApplicantType);
 
-    app.get("/getTestimonialsAdmin/:applicantType/:status", [verification.userVerification], controller.getTestimonialsByApplicantTypeAdmin);
+    app.get("/getTestimonialsAdmin/:applicantType/:status", controller.getTestimonialsByApplicantTypeAdmin);
 
-    app.put("/updateTestimonialStatus/:testimonialId/:status", [verification.userVerification], controller.updateTestimonialStatus);
+    app.put("/updateTestimonialStatus/:testimonialId/:status", controller.updateTestimonialStatus);
 };

@@ -2,11 +2,11 @@ const controller = require("../controllers/blog.controller");
 const verification = require("../controllers/verify")
 
 module.exports = function(app) {
-    app.post("/uploadBlog", [verification.userVerification], controller.addBlog);
+    app.post("/uploadBlog", controller.addBlog);
 
     app.get("/viewBlogs", controller.getBlogsView);
 
-    app.put("/editBlog/:blogId", [verification.userVerification], controller.editBlog);
+    app.put("/editBlog/:blogId", controller.editBlog);
 
-    app.delete("/deleteBlog/:blogId", [verification.userVerification], controller.deleteBlog);
+    app.delete("/deleteBlog/:blogId", controller.deleteBlog);
 }
