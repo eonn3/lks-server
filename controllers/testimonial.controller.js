@@ -72,6 +72,20 @@ exports.getTestimonialsByPendingStatus = async (req, res) => {
   }
 };
 
+// Function to get testimonials by approved status
+exports.getTestimonialsByApprovedStatus = async (req, res) => {
+  try {
+      const pendingTestimonials = await testimonial
+      .find({ status: "Approved" })
+      .select("name text email contactNumber applicantType")
+      .exec();
+
+      res.status(200).json({ testimonials: pendingTestimonials });
+  } catch (error) {
+      console.error("Error getting testimonials by pending status:", error);
+      res.status(500).json({ message: "An error occurred while getting testimonials." });
+  }
+};
 
 exports.updateTestimonialStatus = async (req, res) => {
   try {
