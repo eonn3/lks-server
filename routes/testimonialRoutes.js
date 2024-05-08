@@ -12,5 +12,7 @@ module.exports = function(app) {
 
     app.get("/getApprovedTestimonials", controller.getTestimonialsByApprovedStatus);
 
-    app.put("/updateTestimonialStatus/:testimonialId/:status", controller.updateTestimonialStatus);
+    app.put("/updateTestimonialStatus/:testimonialId/Approved", controller.updateTestimonialStatusApproved);
+
+    app.put("/updateTestimonialStatus/:testimonialId/Removed", controller.updateTestimonialStatusApproved);
 };

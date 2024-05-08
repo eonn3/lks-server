@@ -87,26 +87,48 @@ exports.getTestimonialsByApprovedStatus = async (req, res) => {
   }
 };
 
-exports.updateTestimonialStatus = async (req, res) => {
+// Approve testimonial
+exports.updateTestimonialStatusApproved = async (req, res) => {
   try {
-      const { testimonialId, status } = req.params;
+      const { testimonialId } = req.params;
 
-      // Check if the status provided is valid
-      if (!["Approved", "Rejected"].includes(status)) {
-          return res.status(400).json({ message: "Invalid status provided." });
-      }
-
-      // Find the testimonial by ID and update its status
       const updatedTestimonial = await testimonial.findById(testimonialId);
-
-      updatedTestimonial.status = status;
-      await updatedTestimonial.save();
 
       if (!updatedTestimonial) {
           return res.status(404).json({ message: "Testimonial not found." });
       }
 
-      res.status(200).json({ message: "Testimonial status updated successfully.", testimonial: updatedTestimonial });
+      if (updatedTestimonial.status === "Pending") {
+          updatedTestimonial.status = "Approved";
+          await updatedTestimonial.save();
+
+          res.status(200).json({ message: "Testimonial status updated to 'Approved' successfully.", testimonial: updatedTestimonial });
+      } else {
+          res.status(400).json({ message: "Testimonial status is not 'Pending', cannot change to 'Approved'." });
+      }
+  } catch (error) {
+      console.error("Error updating testimonial status:", error);
+      res.status(500).json({ message: "An error occurred while updating testimonial status." });
+  }
+};
+
+// Remove testimonial
+exports.updateTestimonialStatusRemoved = async (req, res) => {
+  try {
+      const { testimonialId } = req.params;
+
+      const updatedTestimonial = await testimonial.findById(testimonialId);
+
+      if (!updatedTestimonial) {
+          return res.status(404).json({ message: "Testimonial not found." });
+      }
+
+
+          updatedTestimonial.status = "Removed";
+          await updatedTestimonial.save();
+
+          res.status(200).json({ message: "Testimonial removed successfully."});
+       
   } catch (error) {
       console.error("Error updating testimonial status:", error);
       res.status(500).json({ message: "An error occurred while updating testimonial status." });
