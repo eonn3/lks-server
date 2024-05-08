@@ -124,7 +124,7 @@ exports.updateTestimonialStatusRemoved = async (req, res) => {
       }
 
 
-          updatedTestimonial.status = "Removed";
+          updatedTestimonial.status = "Rejected";
           await updatedTestimonial.save();
 
           res.status(200).json({ message: "Testimonial removed successfully."});
