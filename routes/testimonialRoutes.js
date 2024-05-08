@@ -14,5 +14,5 @@ module.exports = function(app) {
 
     app.put("/updateTestimonialStatus/:testimonialId/Approved", controller.updateTestimonialStatusApproved);
 
-    app.put("/updateTestimonialStatus/:testimonialId/Removed", controller.updateTestimonialStatusApproved);
+    app.put("/updateTestimonialStatus/:testimonialId/Removed", controller.updateTestimonialStatusRemoved);
 };
