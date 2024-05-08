@@ -85,3 +85,29 @@ module.exports.getFaculty = async (req, res) => {
             })
     }
 }
+
+module.exports.deleteFaculty = async (req, res) => {
+    try {
+        const facultyId = req.params;
+
+        const facultyMember = await Faculty.findById(facultyId);
+
+        if(!facultyMember){
+            return res.json({
+                message: 'Error! Faculty member does not exist! ',
+                error
+            });
+        }else{
+            await Faculty.findByIdAndDelete(facultyId);
+            return res.json({
+                message: 'Faculty member deleted from the database successfully! ',
+                error
+            });
+        }
+    } catch (error) {
+        return res.json({
+            message: 'Error! [deleteFaculty]',
+            error
+        })
+    }
+}
