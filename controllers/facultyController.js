@@ -92,22 +92,22 @@ module.exports.deleteFaculty = async (req, res) => {
 
         const facultyMember = await Faculty.findById(facultyId);
 
-        if(!facultyMember){
-            return res.json({
-                message: 'Error! Faculty member does not exist! ',
-                error
-            });
-        }else{
-            await Faculty.findByIdAndDelete(facultyId);
-            return res.json({
-                message: 'Faculty member deleted from the database successfully! ',
-                error
+        if (!facultyMember) {
+            return res.status(404).json({
+                message: 'Faculty member not found',
             });
         }
+
+        await Faculty.findByIdAndDelete(facultyId);
+
+        return res.status(200).json({
+            message: 'Faculty member deleted from the database successfully!',
+        });
     } catch (error) {
-        return res.json({
-            message: 'Error! [deleteFaculty]',
-            error
-        })
+        console.error('Error in deleteFaculty:', error);
+        return res.status(500).json({
+            message: 'Internal server error',
+            error: error.message, // Provide the error message for better debugging
+        });
     }
-}
+};
