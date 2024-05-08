@@ -88,7 +88,7 @@ module.exports.getFaculty = async (req, res) => {
 
 module.exports.deleteFaculty = async (req, res) => {
     try {
-        const facultyId = req.params;
+        const facultyId = req.params.facultyId;
 
         const facultyMember = await Faculty.findById(facultyId);
 
