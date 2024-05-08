@@ -28,7 +28,7 @@ app.listen(PORT, () => {
 const corsOptions = {
   origin: [
     'http://localhost:3000',
-    'https://lampkiddieschool-napphy-teams.vercel.app'
+    'https://lamp-kiddie-school.vercel.app/'
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
