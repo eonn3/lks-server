@@ -1,5 +1,4 @@
-import mongoose from "mongoose";
-import { type } from "os";
+const mongoose = require("mongoose");
 
 const testimonialSchema = new mongoose.Schema(
     {
@@ -24,9 +23,12 @@ const testimonialSchema = new mongoose.Schema(
             required: true
         },
         status: {
-            type: Boolean,
-            default: false
+            type: String,
+            enum: ["Pending", "Approved", "Rejected"],
+            default: "Pending"
         }
     },
     { timestamps: true }
 );
+
+module.exports = mongoose.model("Testimonial", testimonialSchema);
